@@ -14,46 +14,8 @@ output [N-1:0] Q0,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11,Q12,Q13,Q14,Q15,Q16,Q17,Q18
 );
 
 wire [N-1:0] OneHot;
-/*
-initial begin
-		assign Q0 = 32'h00000000;
-		Q1 <= 32'h00000000;
-		Q2 <= 32'h00000000;
-		Q3 <= 32'h00000000;
-		Q4 <= 32'h00000000;
-		Q5 <= 32'h00000000;
-		Q6 <= 32'h00000000;
-		Q7 <= 32'h00000000;
-		Q8 <= 32'h00000000;
-		Q9 <= 32'h00000000;
-		Q10 <= 32'h00000000;
-		Q11 <= 32'h00000000;
-		Q12 <= 32'h00000000;
-		Q13 <= 32'h00000000;
-		Q14 <= 32'h00000000;
-		Q15 <= 32'h00000000;
-		Q16 <= 32'h00000000;
-		Q17 <= 32'h00000000;
-		Q18 <= 32'h00000000;
-		Q19 <= 32'h00000000;
-		Q20 <= 32'h00000000;
-		Q21 <= 32'h00000000;
-		Q22 <= 32'h00000000;
-		Q23 <= 32'h00000000;
-		Q24 <= 32'h00000000;
-		Q25 <= 32'h00000000;
-		Q26 <= 32'h00000000;
-		Q27 <= 32'h00000000;
-		Q28 <= 32'h00000000;
-		Q29 <= 32'h00000000;
-		Q30 <= 32'h00000000;
-		Q31 <= 32'h00000000;
-	end
-*/
-
 
 onehot PriorityDecoder (.din(Write_Register_i),.dout(OneHot));
-
 
 register #(.SIZE(N)) zero (.clk(clk), .clr(reset), .d(0), .q(Q0), .clock_enable(Reg_Write_i)); //$Zero
 register #(.SIZE(N)) at (.clk(clk), .clr(reset), .d(Write_Data_i), .q(Q1), .clock_enable(Reg_Write_i & OneHot[1])); //$at
@@ -89,12 +51,12 @@ register #(.SIZE(N)) fp (.clk(clk), .clr(reset), .d(Write_Data_i), .q(Q30), .clo
 register #(.SIZE(N)) ra (.clk(clk), .clr(reset), .d(Write_Data_i), .q(Q31), .clock_enable(Reg_Write_i & OneHot[31]));
 
 
-mux32 #(.WIDTH(N)) RrsMux (.Sel(Read_Register_1_i), .Data_out(Read_Data_1_o), .I0(Q0), .I1(Q1), .I2(Q2), .I3(Q3),
+mux32 #(.WIDTH(N)) RrsMux (.Sel(Read_Register_1_i), .Data(Read_Data_1_o), .I0(Q0), .I1(Q1), .I2(Q2), .I3(Q3),
 .I4(Q4), .I5(Q5), .I6(Q6), .I7(Q7), .I8(Q8), .I9(Q9), .I10(Q10), .I11(Q11),.I12(Q12), .I13(Q13), .I14(Q14), .I15(Q15), .I16(Q16), .I17(Q17), 
 .I18(Q18), .I19(Q19), .I20(Q20), .I21(Q21), .I22(Q22), .I23(Q23), .I24(Q24), .I25(Q25), .I26(Q26), .I27(Q27), .I28(Q28), .I29(Q29), .I30(Q30), 
 .I31(Q31)); 
 
-mux32 #(.WIDTH(N)) RrtMux (.Sel(Read_Register_2_i), .I0(Q0), .I1(Q1), .I2(Q2), .I3(Q3),
+mux32 #(.WIDTH(N)) RrtMux (.Sel(Read_Register_2_i), .Data(Read_Data_2_o), .I0(Q0), .I1(Q1), .I2(Q2), .I3(Q3),
 .I4(Q4), .I5(Q5), .I6(Q6), .I7(Q7), .I8(Q8), .I9(Q9), .I10(Q10), .I11(Q11),.I12(Q12), .I13(Q13), .I14(Q14), .I15(Q15), .I16(Q16), .I17(Q17), 
 .I18(Q18), .I19(Q19), .I20(Q20), .I21(Q21), .I22(Q22), .I23(Q23), .I24(Q24), .I25(Q25), .I26(Q26), .I27(Q27), .I28(Q28), .I29(Q29), .I30(Q30), 
 .I31(Q31)); 
