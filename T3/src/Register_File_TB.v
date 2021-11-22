@@ -10,6 +10,7 @@
 * Date:
 *	12/06/2015
 ******************************************************************/
+`timescale 1ns / 1ps
 
 module Register_File_TB;
 
@@ -35,12 +36,12 @@ DUV
 	.clk(clk_tb),
 	.reset(reset_tb),
 	.Reg_Write_i(Reg_Write_i_tb),
-	.Write_Register_i(Write_Register_i_tb),
-	.Read_Register_1_i(Read_Register_1_i_tb),
-	.Read_Register_2_i(Read_Register_2_i_tb),
+	.Write_Register_i(Write_Register_tb),
+	.Read_Register_1_i(Read_Register_1_tb),
+	.Read_Register_2_i(Read_Register_2_tb),
 	.Write_Data_i(Write_Data_i_tb),
-	.Read_Data_1_o(Read_Data_1_o_tb),
-	.Read_Data_2_o(Read_Data_2_o_tb),
+	.Read_Data_1_o(Read_Data_1_tb),
+	.Read_Data_2_o(Read_Data_2_tb),
 	.Q1(Q1_tb)
 );
 
