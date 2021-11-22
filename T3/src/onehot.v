@@ -1,5 +1,5 @@
 module onehot(din,dout);
-localparam ACTIVE = 1;
+localparam ACTIVE = 1'b1;
 
 input [4:0] din;
 output reg [31:0] dout;
